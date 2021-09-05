@@ -6,9 +6,9 @@ Este projeto faz uso do módulo de testes StateManager, cuja documentação pode
 
 ## Execução
 
-Para compilar o programa, abrir a pasta **/src** e rodar (para usuários Unix)
+Para compilar o programa, rodar (para usuários Unix)
 
-`gcc -o main main.c buffer.c ../StateManager/stateManager.c -pthread -I/$LUA_CDIR -llua5.3`
+`gcc -o main main.c buffer.c ./StateManager/stateManager.c -pthread -I/$LUA_CDIR -llua5.3`
 
 Obs: [O usuário deve instalar Lua 5.3 na máquina, caso já não esteja instalado.](https://github.com/AnnaLeticiaAlegria/Testes_Concorrentes#como-utilizar-o-m%C3%B3dulo-statemanager)
 
