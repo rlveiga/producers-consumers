@@ -53,20 +53,20 @@ void finalizabuffer(int numpos, int numprod, int numcons) {
 }
 
 void deposita (int item) {
-  checkState("ProducerInitialized");
+  // checkState("ProducerInitialized");
 
   sem_wait(&exc);
 
-  checkState("ProducerStarted");
+  // checkState("ProducerStarted");
 
   if(freeSlots == 0) {
     dw++;
     sem_post(&exc);
     sem_wait(&w);
-    checkState("ProducerWaiting");
+    // checkState("ProducerWaiting");
   }
 
-  checkState("ProducerWriteStarts");
+  // checkState("ProducerWriteStarts");
 
   sem_wait(&exc);
 
@@ -76,34 +76,34 @@ void deposita (int item) {
   freeSlots--;
   totalEscritos++;
 
-  checkState("ProducerWriteEnds");
+  // checkState("ProducerWriteEnds");
   
   // Check for delayed readers
   if(freeSlots < BUFSIZE && dr > 0) {
     dr--;
     sem_post(&r);
-    checkState("ProducerFreedConsumer");
+    // checkState("ProducerFreedConsumer");
   }
 
-  checkState("ProducerEnds");
+  // checkState("ProducerEnds");
   sem_post(&exc);
 }
 
 int consome (int meuid) {
-  checkState("ConsumerInitialized");
+  // checkState("ConsumerInitialized");
 
   sem_wait(&exc);
 
-  checkState("ConsumerStarts");
+  // checkState("ConsumerStarts");
 
   if(lidos[meuid] == totalEscritos || freeSlots == BUFSIZE) {
     dr++;
     sem_post(&exc);
-    checkState("ConsumerWaiting");
+    // checkState("ConsumerWaiting");
     sem_wait(&r);
   }
 
-  checkState("ConsumerReadingStarts");
+  // checkState("ConsumerReadingStarts");
 
   sem_wait(&exc);
 
@@ -117,24 +117,24 @@ int consome (int meuid) {
     freeSlots++;
   }
 
-  checkState("ConsumerReadingEnds");
+  // checkState("ConsumerReadingEnds");
 
   // Check for delayed writers
   if(freeSlots > 0 && dw > 0) {
     dw--;
     sem_post(&w);
-    checkState("ConsumerFreedProducer");
+    // checkState("ConsumerFreedProducer");
   }
 
   // Check for delayed readers
   else if(freeSlots < BUFSIZE && dr > 0) {
     dr--;
     sem_post(&r);
-    checkState("ConsumerFreedConsumer");
+    // checkState("ConsumerFreedConsumer");
   }
 
   sem_post(&exc);
-  checkState("ConsumerEnds");
+  // checkState("ConsumerEnds");
 
   return item;
 }

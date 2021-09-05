@@ -57,7 +57,7 @@ int main (int argc, char *argv[]) {
     // reusing the strings to avoid unnecessary conversions
     printf("Initializing broadcast of %s messages with %s producers and %s consumers; buffer size is %s\n", argv[4], argv[2], argv[3], argv[1]);
 
-    initializeManager("test.txt", numprod + numcons); // Initialize state manager with test file
+    // initializeManager("test.txt", numprod + numcons); // Initialize state manager with test file
     iniciabuffer(numpos, numprod, numcons);
 
     pthread_t* cid = (pthread_t*)malloc(sizeof(pthread_t)*numcons);
