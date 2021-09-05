@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-#include "../StateManager/stateManager.h" // Require StateManager for testing
+#include "./StateManager/stateManager.h" // Require StateManager for testing
 
 int* buf;
 int BUFSIZE, NUMCONS, NUMPROD;

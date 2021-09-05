@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include "buffer.h"
 
-#include "../StateManager/stateManager.h" // Require StateManager for testing
+#include "./StateManager/stateManager.h" // Require StateManager for testing
 
 // argument to pthread
 typedef struct
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
   // reusing the strings to avoid unnecessary conversions
   printf("Initializing broadcast of %s messages with %s producers and %s consumers; buffer size is %s\n", argv[4], argv[2], argv[3], argv[1]);
 
-  // initializeManager("../tests/7.txt", numprod + numcons); // Initialize state manager with test file
+  // initializeManager("./tests/7.txt", numprod + numcons); // Initialize state manager with test file
   iniciabuffer(numpos, numprod, numcons);
 
   pthread_t *cid = (pthread_t *)malloc(sizeof(pthread_t) * numcons);
