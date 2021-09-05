@@ -1,0 +1,14 @@
+ProducerInitialized *
+ProducerStarted *
+ProducerWriteStarts *
+ProducerInitialized 1
+ProducerStarted 1
+ProducerWaiting 1
+ProducerWriteEnds *
+ProducerEnds *
+ConsumerInitialized *
+ConsumerStarts *
+ConsumerReadingStarts *
+ConsumerReadingEnds *
+ConsumerFreedProducer *
+ConsumerEnds *

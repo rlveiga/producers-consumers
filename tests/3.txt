@@ -1,0 +1,9 @@
+ProducerInitialized *
+ProducerStarted *
+ProducerWriteStarts *
+ProducerInitialized 1
+ProducerStarted 1
+ProducerWaiting 1
+ProducerWriteEnds *
+ProducerFreedProducer *
+ProducerEnds *
